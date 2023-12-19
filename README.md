@@ -51,4 +51,5 @@ scala initial
 ## Notes
 - Ensure you are in the correct directory where the files are located before running the compile commands.
 - The instructions provided are for Unix-like environments. For Windows, the executable will have a `.exe` extension for Rust programs.
-- For windows users, you can edit the `script.bat` file to compile all the rust files at once, simply change the path in the script to use the path to your directory
+- For Windows users, you can edit the `script.bat` file to compile all the rust files at once, simply change the path in the script to use the path to your directory
+- For MacOS and Linux users, you can edit the `compiler.sh` file to compile all the rust files at once, simply change the path in the script to use the path to your directory
