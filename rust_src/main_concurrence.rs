@@ -98,9 +98,9 @@ loop {
     if work.lock().unwrap().is_empty() && *num.lock().unwrap() == 0 {
         break;
     } else if let Some(node) = work.lock().unwrap().pop() {
-        let a_work = Arc::clone(&work);
-        let c_num = Arc::clone(&num);
-        *c_num.lock().unwrap() += 1;
+        let wwork = Arc::clone(&work);
+        let nnum = Arc::clone(&num);
+        *nnum.lock().unwrap() += 1;
         let current_worker_id = worker_id;
         worker_id += 1; 
         let handle = thread::spawn(move || {
@@ -108,8 +108,8 @@ loop {
             node.lock().unwrap().explore(
                 Arc::clone(&node),
                 &mut trace,
-                &mut Arc::clone(&a_work),
-                &mut Arc::clone(&c_num),
+                &mut Arc::clone(&wwork),
+                &mut Arc::clone(&nnum),
             );
             println!("worker {} explored nodes: {:?}", current_worker_id, trace);
         });
